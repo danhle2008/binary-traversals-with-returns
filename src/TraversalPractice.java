@@ -86,7 +86,7 @@ public class TraversalPractice {
         } 
         int sumLeftLeafNodes = sumLeafNodes(node.left);
         int sumRightLeafNodes = sumLeafNodes(node.right);
-            int total = sumLeftLeafNodes + sumRightLeafNodes;
+        int total = sumLeftLeafNodes + sumRightLeafNodes;
         return total;
     }
 
@@ -143,10 +143,16 @@ public class TraversalPractice {
      * Output: 7 (There are seven branch nodes: 9, 2, 7, 4, 5, 3, and 33)
      * 
      * @param node the root of the tree
-     * @return the count of branch nodes in the tree
+     * @return the count of branch nodes in the tree | check if the node if it has children or not | root = 1, 1 + something
      */
     public static int branchCount(TreeNode node) {
-        return -1;
+        if (node == null || node.left == null && node.right == null) return 0;
+        
+        int countLeft = branchCount(node.left);
+        int countRight = branchCount(node.right);
+
+        return 1 + countLeft + countRight;
+        
     }
 
 
